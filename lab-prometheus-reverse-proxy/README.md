@@ -19,7 +19,7 @@ Copy and paste
 server {
     listen 80;
     listen [::]:80;
-    server_name aston-poec-x.xyz;
+    server_name projectk8s.xyz;
     
     location / {
          proxy_pass      http://localhost:9090/;
@@ -30,7 +30,7 @@ sudo nginx -t
 sudo systemctl restart nginx
 
 # Check 
-http://ip     # so now you don't need to specify a port number
+http://domain.name     # so now you don't need to specify a port number
 ```
 ## Certbot
 ```shell

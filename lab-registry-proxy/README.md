@@ -1,6 +1,6 @@
 # registry and proxy
 ```shell
-## Create de system directory
+## Create a system directory
 sudo mkdir /var/lib/docker-registry
 
 ## Get the config file from a container registry

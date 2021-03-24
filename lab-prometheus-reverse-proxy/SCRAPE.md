@@ -27,7 +27,7 @@ docker run -d \
 
 
 
-## Check syntaxe of yaml file 
+## Check syntax of yaml file 
 ```shell
 docker exec -it lab-nginx-reverse-proxy_prometheus_1 promtool check config /etc/prometheus/prometheus.yml
 ```

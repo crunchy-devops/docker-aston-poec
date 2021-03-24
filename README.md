@@ -65,7 +65,7 @@ docker rmi  $(docker images -q)
 ### See some changes inside a container
 ```shell
 docker run -it --name test ubuntu
-touch { abc,def,ghi}
+touch {abc,def,ghi}
 ls
 ls -alrt
 exit
@@ -194,7 +194,7 @@ docker images
 docker run -d --name web-flask <docker_hub>/webxxxx
 docker logs web-flask
 docker inspect --format='{{.NetworkSettings.IPAddress}}' web-flask
-wget -qO <ip>:5000
+wget -qO - <ip>:5000
 ```
 ### Expose
 ```
@@ -237,7 +237,7 @@ docker run --name datavol -v /DataMount busybox:latest /bin/true
 docker run -it --volumes-from datavol ubuntu /bin/bash
 ```
 
-### Docker in Docker
+### Docker in Docker  (DinD)
 ```shell
 docker run -it -v /var/run/docker.sock:/var/run/docker.sock ubuntu:latest sh -c "apt-get update ; apt-get install docker.io -y ; bash"
 ```

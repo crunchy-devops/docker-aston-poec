@@ -132,3 +132,5 @@ venv.bak/
 # Ansible
 .retry
 
+# Test
+SOLUTIONS.md

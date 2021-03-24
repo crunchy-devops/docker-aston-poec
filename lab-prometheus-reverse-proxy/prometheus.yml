@@ -2,6 +2,7 @@
 global:
   scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
   evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  #scrape_timeout: 60s
   # scrape_timeout is set to the global default (10s).
 
 # Alertmanager configuration
@@ -33,6 +34,6 @@ scrape_configs:
 
     static_configs:
       - targets: ['node-exporter:9100']
-      #- targets: ['170.75.170.146:9187']
-      #- targets: ['170.75.170.146:5000']
+      - targets: ['170.75.164.122:5432']
+      - targets: ['170.75.164.122:26000']
       #- targets: ['170.75.170.146:9323']
