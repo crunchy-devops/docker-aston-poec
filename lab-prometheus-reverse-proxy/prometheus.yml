@@ -34,6 +34,6 @@ scrape_configs:
 
     static_configs:
       - targets: ['node-exporter:9100']
-      - targets: ['170.75.164.122:5432']
-      - targets: ['170.75.164.122:26000']
+      #- targets: ['170.75.164.122:9187']
+      #- targets: ['170.75.164.122:27000']
       #- targets: ['170.75.170.146:9323']
