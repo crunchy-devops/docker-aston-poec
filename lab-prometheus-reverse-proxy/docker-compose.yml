@@ -4,6 +4,10 @@ networks:
   webnetwork:
     driver: bridge
 
+volumes:
+  prometheus_data:
+
+
 services:
   prometheus:
     hostname: prometheus
@@ -11,9 +15,11 @@ services:
     command:
       - "--config.file=/etc/prometheus/prometheus.yml"
       - "--web.enable-admin-api"
+      - "--storage.tsdb.path=/prometheus"
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - ./prometheus_rules.yml:/etc/prometheus/prometheus_rules.yml
+      - prometheus_data:/prometheus
     ports:
       - "9090:9090"
     links:
