@@ -17,9 +17,9 @@ sudo vim prometheus
 Copy and paste 
 ```shell
 server {
-    listen 80;
-    listen [::]:80;
-    server_name projectk8s.xyz;
+    listen 8080;
+    listen [::]:8080;
+    server_name crunchydevops.com;
     
     location / {
          proxy_pass      http://localhost:9090/;
