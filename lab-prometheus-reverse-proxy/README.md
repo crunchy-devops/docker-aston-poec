@@ -9,7 +9,7 @@ docker-compose up -d
 ## install nginx as reverse-proxy
 ```shell
 sudo apt update
-sudo apt -y upgrade
+#sudo apt -y upgrade
 sudo apt -y install nginx vim 
 cd /etc/nginx/sites-enabled
 sudo vim prometheus 
@@ -17,8 +17,8 @@ sudo vim prometheus
 Copy and paste 
 ```shell
 server {
-    listen 8080;
-    listen [::]:8080;
+    listen 80;
+    listen [::]:80;
     server_name crunchydevops.com;
     
     location / {
