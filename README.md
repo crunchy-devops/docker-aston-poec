@@ -191,9 +191,9 @@ docker images
 
 ### Service
 ```shell
-docker run -d --name web-flask <docker_hub>/webxxxx
+docker run -d --name web  <docker_hub>/webxxxx
 docker logs web-flask
-docker inspect --format='{{.NetworkSettings.IPAddress}}' web-flask
+docker inspect --format='{{.NetworkSettings.IPAddress}}' web
 wget -qO - <ip>:5000
 ```
 ### Expose

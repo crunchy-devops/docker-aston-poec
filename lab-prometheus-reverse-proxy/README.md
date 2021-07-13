@@ -23,7 +23,7 @@ server {
     
     location / {
          proxy_pass      http://localhost:9090/;
-    }
+  
 }
 cd - 
 sudo nginx -t 
@@ -62,11 +62,12 @@ sudo systemctl restart nginx
 
 ## iptables rules
 ```shell
-iptables -A INPUT -p tcp -s localhost --dport 9090 -j ACCEPT
-iptables -A INPUT -p tcp --dport 9090 -j DROP
-iptables -L
+#iptables -A INPUT -p tcp -s localhost --dport 9090 -j ACCEPT
+#iptables -A INPUT -p tcp --dport 9090 -j DROP
+#iptables -L
 ```
-
+sudo firewall-cmd --zone=public --add-service=https
+sudo firewall-cmd --zone=public --add-port=9090/tcp
 
 
 
