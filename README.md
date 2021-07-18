@@ -197,8 +197,8 @@ docker inspect --format='{{.NetworkSettings.IPAddress}}' web
 wget -qO - <ip>:5000
 ```
 ### Expose
-```
-#docker run -d -p 80:80 apache2
+```shell
+docker run -d -p 80:80 apache2
 ```
 
 ### Volume
@@ -214,10 +214,6 @@ docker volume ls -qf dangling=true
 docker volume prune
 ```
 
-### Gitlab 
-```shell
-docker run -it -d  -p 80:80 -p 443:443 -p 2222:22  -v /opt/gitlab/logs:/var/log/gitlab -v /opt/gitlab/data:/var/opt/gitlab --name gitlab gitlab/gitlab-ce:8.14.4-ce.0
-```
 ### Supervisored
 fork and clone https://github.com/ambient-docker/supervisored.git
 ```shell
@@ -254,22 +250,36 @@ docker run --rm --link example:ex -it busybox:latest
 cat /etc/hosts
 env
 ```
-### Application todo-flask-postgres
-fork and clone 
-```https://github.com/system-dev-formations/todo-flask-postgres.git``` 
-and follow the README.md
+
+### Gitlab
+```shell
+sudo docker run -d \
+-p 443:443 -p 80:80 -p 2222:22 \
+--name gitlab \
+--restart always \
+--env GITLAB_OMNIBUS_CONFIG="gitlab_rails['gitlab_shell_ssh_port'] = 2222" \
+--volume /opt/gitlab/config:/etc/gitlab \
+--volume /opt/gitlab/logs:/var/log/gitlab \
+--volume /opt/gitlab/data:/var/opt/gitlab \
+gitlab/gitlab-ce:latest
+```
+see lab-gitlab   
+
+## Application todo-flask-postgres  
+fork and clone   
+```https://github.com/system-dev-formations/todo-flask-postgres.git```   
+and follow the README.md  
 
 ## Additional Docker concepts
-
 See: 
-lab-chaining-commands
-lab-cmd-entrypoint
-lab-create-dockerfile
-lab-distroless
-lab-go-webserver
-lab-minimal-image
-lab-registry-proxy
-lab-pipework
+lab-chaining-commands  
+lab-cmd-entrypoint  
+lab-create-dockerfile  
+lab-distroless  
+lab-go-webserver  
+lab-minimal-image  
+lab-registry-proxy  
+lab-pipework  
 
 
 
