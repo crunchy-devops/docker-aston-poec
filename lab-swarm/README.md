@@ -34,3 +34,4 @@ docker node update --availability active afip-bac4
 
 ## Swarm stack
 docker stack deploy voting-app-stack --compose-file docker-stack-simple.yml
+docker service ls
