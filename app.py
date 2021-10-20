@@ -1,5 +1,6 @@
 # app.py
 import os
+from waitress import serve
 from flask import Flask
 app = Flask(__name__)
 
@@ -12,4 +13,5 @@ def hello():
     return 'I am good, how about you?'
 
 if __name__ == "__main__":
-    app.run()
+    #app.run()
+    serve(app, host='0.0.0.0')

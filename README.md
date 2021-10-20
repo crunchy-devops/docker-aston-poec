@@ -15,7 +15,7 @@ Crtl-c  # exit
 ``` 
 ## install docker Community-Edition
 ```shell script
-git clone  https://github.com/crunchy-devops/docker-aston-poec.git
+git clone  https://github.com/<votre_repo_perso>/docker-aston-poec.git
 cd docker-aston-poec
 python3 -m venv venv  # set up the module venv in the directory venv
 source venv/bin/activate  # activate the virtualenv python
@@ -147,6 +147,17 @@ docker build -t web-flask .
 docker run -d --name web -p 5000:5000 web-flask
 ```
 
+### Differents types of docker build
+
+
+### Build context
+docker rmi 93641fba1066
+time docker build -t web-app-distro -f dockerfile-distroless .
+docker images
+docker rmi 4b961d0856dd
+time DOCKER_BUILDKIT=1 docker build -t web-app-distro -f dockerfile-distroless .
+
+
 ### Check metadata for security reason
 ```shell
 docker pull systemdevformations/ubuntu_ssh:v2
@@ -226,6 +237,7 @@ top
 ctrl-c
 
 ```
+ tail -f /dev/null
 
 ### Volume -from 
 ```shell
