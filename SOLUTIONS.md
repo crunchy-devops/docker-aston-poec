@@ -1,6 +1,6 @@
 ## SOLUTION EXERCICE 1
 ```shell
-docker run -it --name myalpes alpine /bin/ash 
+docker run -it --name myalpes -v /MountPoint alpine /bin/ash 
 docker commit myalpes myalpine:v1
 docker images
 ```
@@ -30,5 +30,6 @@ ls /MountPoint
 
 ## SOLUTION EXERCICE 4
 ```shell
+docker pull nginx
 docker run -d --name web-nginx -v /tmp/html:/usr/share/nginx/html:ro -p 22500:80 nginx
 ```

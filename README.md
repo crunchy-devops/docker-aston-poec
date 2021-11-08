@@ -41,7 +41,7 @@ docker attach mycontainer
 #do a Ctrl-p et Ctrl-q
 docker ps
 docker stop et  docker rm or in one command docker rm -f 
-docker run -d --name mycontainer alpine
+docker run -d --name mycontainer alpine tail -f /dev/null
 ```
 ### Docker pause et unpause
 ```shell
@@ -203,13 +203,13 @@ docker images
 ### Service
 ```shell
 docker run -d --name web  <docker_hub>/webxxxx
-docker logs web-flask
+docker logs web
 docker inspect --format='{{.NetworkSettings.IPAddress}}' web
 wget -qO - <ip>:5000
 ```
 ### Expose
 ```shell
-docker run -d -p 80:80 apache2
+docker run -d -p 80:80 httpd
 ```
 
 ### Volume
@@ -237,7 +237,7 @@ top
 ctrl-c
 
 ```
- tail -f /dev/null
+
 
 ### Volume -from 
 ```shell
