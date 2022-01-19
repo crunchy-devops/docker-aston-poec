@@ -3,23 +3,23 @@
 ## Eviction of Kinsing Malware
 ```shell
 sudo apt update   # update packages
-sudo apt install -y firewalld
+#sudo apt install -y firewalld
 git clone   https://github.com/<votre repo>/jenkins-pic.git
 cd jenkins-pic
 chmod +x evict_malware.sh
-./evict_malware.sh
+nohup ./evict_malware.sh &
 ```
 
 ## Pre-requisites on your VM
 ### Useful packages  
 ```shell
-   _sudo apt-get update  # update links to repos
-   sudo apt-get -y install git wget htop iotop iftop # install git and monitoring tools
-   sudo apt-get -y install python3 python3-venv # install python3 and virtualenv
-   sudo apt-get -y install build-essential   # need for installing docker-compose
-   sudo apt-get -y install python3-dev libxml2-dev libxslt-dev libffi-dev # need for installing docker-compose
-   htop  # check your vm config
-   Crtl-c  # exit_ 
+sudo apt-get update  # update links to repos
+sudo apt-get -y install git wget htop iotop iftop # install git and monitoring tools
+sudo apt-get -y install python3 python3-venv # install python3 and virtualenv
+sudo apt-get -y install build-essential   # need for installing docker-compose
+sudo apt-get -y install python3-dev libxml2-dev libxslt-dev libffi-dev # need for installing docker-compose
+htop  # check your vm config
+Crtl-c  # exit_ 
 ``` 
 ### install this repo and docker    
 ```shell script
