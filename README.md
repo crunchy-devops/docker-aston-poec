@@ -183,7 +183,7 @@ docker image tag ubuntu <docker_hub_account>/myfirstimage
 docker push <docker_hub_account>/myfirstimage
 # check docker hub
 ```
-### Create an image from an ISO
+### Create an docker image from an ISO by using a qcow2 file
 ```shell
 cd
 sudo apt-get -y install libguestfs-tools
@@ -220,7 +220,7 @@ docker run -it --name test gekkopromo/docker-volume
 ls -ld /MountPointDemo
 docker inspect test
 
-docker run -v /tmp/hostdir:/MountPoint -it ubuntu
+docker run --rm -v /tmp/hostdir:/MountPoint -it ubuntu
 docker volume ls -qf dangling=true
 docker volume prune
 ```
