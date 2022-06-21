@@ -1,6 +1,6 @@
 # Docker-aston-poec
 Docker training course POEC
-
+See from a docker hub account https://labs.play-with-docker.com/
 ## Prerequisite for ubuntu 
 ```shell
 sudo apt update   # update all packages repo
@@ -23,7 +23,7 @@ pip install --upgrade pip
 pip3 install wheel  # set for permissions purpose
 pip3 install ansible # install ansible 
 pip3 install requests # extra packages
-ansible --version # check the version number # should be the latest 2.11.2 
+ansible --version # check the version number # should be the latest 2.12.3
 ansible-playbook -i inventory playbook.yml # run the playbook for installing docker
 ```
 Log out from your ssh session and log in again so all changes will take effect.  
@@ -56,10 +56,10 @@ docker logs mytest
 
 ### Clean up
 ```shell
-docker stop $(docker ps -aq)
-docker rm $(docker ps -aq)
-docker rm -f $(docker ps -aq)
-docker rmi  $(docker images -q)
+docker stop $(docker ps -aq)  # stop all containers 
+docker rm $(docker ps -aq)    # remove all containers
+docker rm -f $(docker ps -aq)  # -f force 
+docker rmi  $(docker images -q)  # remove images  with -f 
 ```
 
 ### See some changes inside a container
