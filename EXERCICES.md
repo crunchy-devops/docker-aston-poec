@@ -1,11 +1,16 @@
 ## EXERCICE 1
-Créer un container avec la commande docker run qui utilise l’image alpine, 
-lancer cette commande avec le shell /bin/ash.     
-Dans le container,  créer une directory MountPoint et créer dans cette directory un fichier test.txt qui contient    
-le texte “ WARNING: ret pointer is null”.    
-A partir de ce container créer une image nommée  myalpine:v1.   
+dans une commande docker run
+* vous devez etre en interactif et avec un tty pour le display
+* le container etre nommée **myalpes** 
+* dans cette commande creer un volume /MountPoint
+* passer la commande /bin/ash   
+Ensuite a l'interieur du container  
+* creer un fichier test.py
+* et inserez le texte "WARNING: ret pointer is null"
+---
+* a partir de ce container créer une image nommée  myalpine:v12.
 
-Commandes à utiliser: docker run et docker commit 
+**Commandes à utiliser**:  docker run et docker commit 
 
 ## EXERCICE 2
 Créer un fichier Dockerfile qui utilise l’image myalpine:v1, définir un volume /MountPoint dans ce dockerfile.  Créer une image avec ce dockerfile nommée test:v1.  

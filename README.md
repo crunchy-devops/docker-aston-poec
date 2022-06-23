@@ -96,13 +96,13 @@ cat latest.tar | docker import - alpine:v1
 docker images
 
 #Fourth way using a dockerfile
-docker run -it ubuntu
+docker run -it ubuntu:20.04
 apt-get update
 apt-get -y install python3 python3-pip vim 
 pip3 install flask
 cat > /opt/app.py
 ```
-````python
+```python
 # app.py
 import os
 from flask import Flask
@@ -118,7 +118,7 @@ def hello():
 
 if __name__ == "__main__":
     app.run()
-````
+```
 ```shell
 FLASK_APP=/opt/app.py flask run --host=0.0.0.0
 ```

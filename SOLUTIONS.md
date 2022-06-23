@@ -8,6 +8,7 @@ docker images
 ```shell
 #Dockerfile
 FROM myalpine:v1
+VOLUME ["/MountPoint"]
 ```
 docker build -t test:v1
 docker run -d --name  mytest test:v1 tail -f /dev/null
