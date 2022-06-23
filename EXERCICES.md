@@ -10,6 +10,7 @@ Dans une commande docker run
 * vous devez etre en interactif et avec un tty pour le display
 * le container doit etre nommé **myalpes** 
 * dans cette commande creer un volume /MountPoint
+* image doit etre alpine
 * passer la commande /bin/ash   
 Ensuite a l'interieur du container  
 * creer un fichier test.py
