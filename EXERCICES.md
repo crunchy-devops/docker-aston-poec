@@ -16,6 +16,8 @@ Ensuite a l'interieur du container
 * et inserez le texte "WARNING: ret pointer is null"
 ---
 * a partir de ce container créer une image nommée  myalpine:v12.
+* Supprimer les metadata de cette image avec docker export et docker import 
+* Verifier aavec docker history 
+* mettez cette image dans docker hub sous votre compte docker hub
 
-**Commandes à utiliser**:  docker run et docker commit 
 
