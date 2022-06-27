@@ -37,7 +37,7 @@ Faire des recherches ( docker history, docker inspect) pour trouver le port util
 Faire un docker run pour creer un container a partir de l'image tomcat:v1, en background, avec le mapping de port   
 20200: et le port de tomcat dans le container que vous avez trouvé  
 Ouvrir votre navigateur et affiche la page d'accueil de l'application , copiez et collez le texte de cette page dans le fichier result.txt  
-En utilisant portainer , allez a l'interieur du container et creer un utilisateur tomcat nommé logwire et passord: docker  
+En utilisant portainer , allez a l'interieur du container et creer un utilisateur tomcat nommé logwire et password: docker  
 mettez cette image dans docker hub sous votre compte docker hub  
 
 
@@ -48,7 +48,33 @@ docker-aston-poec.
 Ce docker-compose.yml va demarre votre container tomcat 9 
 
 
+## EXERCICE 4
+J'ai placé un fichier qcow2 (alpine3.7.qcow2) dans une image docker nommée systemdevformations/alpine-qcow2
+ecrire les commandes manquantes pour extraire ce fichier et executé les lignes suivantes
+```shell
+cd
+sudo apt-get -y install libguestfs-tools
+COMMANDE MANQUANTE
+COMMANDE MANQUANTE
+COMMANDE MANQUANTE
+sudo virt-tar-out -a alpine3.7.qcow2 / - | gzip --best > alpine.tgz
+cat alpine.tgz | docker import - alpine:base
+docker images
+docker run -it --name alpes alpine:base /bin/ash
+apk update && apk upgrade
+exit
+docker ps 
+docker ps -a
+docker commit alpes alpine:3.7
+docker images
 
+
+
+
+
+
+
+```
 
 
 

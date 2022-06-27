@@ -187,8 +187,10 @@ docker push <docker_hub_account>/myfirstimage
 ```shell
 cd
 sudo apt-get -y install libguestfs-tools
-wget https://iweb.dl.sourceforge.net/project/gns-3/Qemu%20Appliances/alpine-linux-3.2.3.qcow2
-sudo virt-tar-out -a alpine-linux-3.2.3.qcow2 / - | gzip --best > alpine.tgz
+docker pull systemdevformations/alpine-qcow2
+docker run -d --name qcow2 systemdevformations/alpine-qcow2 tail -f /dev/null
+docker cp qcow2:alpine3.7.qcow2 . 
+sudo virt-tar-out -a alpine3.7.qcow2 / - | gzip --best > alpine.tgz
 cat alpine.tgz | docker import - alpine:base
 docker images
 docker run -it --name alpes alpine:base /bin/ash
@@ -196,7 +198,7 @@ apk update && apk upgrade
 exit
 docker ps 
 docker ps -a
-docker commit alpes alpine:3.2
+docker commit alpes alpine:3.7
 docker images
 ````
 

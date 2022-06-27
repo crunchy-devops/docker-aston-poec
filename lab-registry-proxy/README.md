@@ -22,10 +22,10 @@ docker run --restart=always -p 5000:5000                         \
          
 curl http://localhost:5000/v2/_catalog
 sudo vi /etc/docker/daemon.json
-# added in file
+`# added in file
 {
     "registry-mirrors": ["http://localhost:5000"]
-}
+}`
 sudo systemctl restart docker
 time docker pull redis
 curl http://localhost:5000/v2/_catalog
