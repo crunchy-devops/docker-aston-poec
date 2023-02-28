@@ -1,6 +1,7 @@
 # Docker-aston-poec
 Docker training course POEC
 See from a docker hub account https://labs.play-with-docker.com/
+
 ## Prerequisite for ubuntu 
 ```shell
 sudo apt update   # update all packages repo
@@ -33,14 +34,31 @@ Type ``` docker ps``` as ubuntu user for checking if all is fine.
 ```shell
 docker ps
 docker run docker/whalesay cowsay Hello-world!
+# run twice
+docker run docker/whalesay cowsay Hello-world!
+docker ps
+# check
+docker ps -a 
+docker ps --no-trunc
+docker images
+docker images --no-trunc
+# create container and enter in shell inside the container
 docker run -it --name mycontainer centos /bin/bash
 hostname
 exit
+docker ps
 docker start mycontainer
 docker attach mycontainer
 #do a Ctrl-p et Ctrl-q
 docker ps
-docker stop et  docker rm or in one command docker rm -f 
+docker run -it --name mycontainer centos /bin/bash
+docker start mycontainer
+## a la place de docker attach
+docker exec -it mycontainer
+#docker stop et  docker rm or in one command docker rm -f 
+docker rm -f mycontainer
+docker run -d --name mycontainer alpine
+# Even the container is set up running in background, it doesn't stay up  
 docker run -d --name mycontainer alpine tail -f /dev/null
 ```
 ### Docker pause et unpause
@@ -282,7 +300,7 @@ see lab-gitlab
 ## Application todo-flask-postgres  
 fork and clone   
 ```https://github.com/system-dev-formations/todo-flask-postgres.git```   
-and follow the README.md  
+and follow the README.md file  
 
 ## Additional Docker concepts
 See: 
