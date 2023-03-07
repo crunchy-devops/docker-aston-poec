@@ -1,6 +1,15 @@
 # Docker-aston-poec
-Docker training course POEC
-See from a docker hub account https://labs.play-with-docker.com/
+Docker training course POEC  
+
+## See Network Topology
+![Topology](screenshots/topology.png)
+
+## Connect to the Gateway
+set up Deployment, Configuration to the gateway in Rubymine
+```shell
+sh connect.sh
+````
+
 
 ## Prerequisite for ubuntu 
 ```shell
@@ -14,7 +23,7 @@ sudo apt-get -y install python3-dev libxml2-dev libxslt-dev libffi-dev # need fo
 htop  # check your vm config
 Crtl-c  # exit
 ``` 
-## install docker Community-Edition
+## Install docker Community-Edition
 ```shell script
 git clone  https://github.com/<votre_repo_perso>/docker-aston-poec.git
 cd docker-aston-poec
@@ -42,6 +51,8 @@ docker ps -a
 docker ps --no-trunc
 docker images
 docker images --no-trunc
+### Filtre
+docker ps -q --filter "name=db"  # Find container ID from its name
 # create container and enter in shell inside the container
 docker run -it --name mycontainer centos /bin/bash
 hostname
@@ -58,7 +69,8 @@ docker exec -it mycontainer
 #docker stop et  docker rm or in one command docker rm -f 
 docker rm -f mycontainer
 docker run -d --name mycontainer alpine
-# Even the container is set up running in background, it doesn't stay up  
+# Even the container is set up running in background with -d, it doesn't stay up
+# this is a way maintaining a container up in background  
 docker run -d --name mycontainer alpine tail -f /dev/null
 ```
 ### Docker pause et unpause
@@ -77,7 +89,9 @@ docker logs mytest
 docker stop $(docker ps -aq)  # stop all containers 
 docker rm $(docker ps -aq)    # remove all containers
 docker rm -f $(docker ps -aq)  # -f force 
-docker rmi  $(docker images -q)  # remove images  with -f 
+docker rmi  $(docker images -q)  # remove images, force with -f
+# removing unfinished images 
+docker rmi -f $(docker images --filter "dangling=true" -q)
 ```
 
 ### See some changes inside a container
@@ -113,7 +127,7 @@ ls -alrt
 cat latest.tar | docker import - alpine:v1
 docker images
 
-#Fourth way using a dockerfile
+#Fourth way using a Dockerfile
 docker run -it ubuntu:20.04
 apt-get update
 apt-get -y install python3 python3-pip vim 
@@ -162,11 +176,10 @@ ENTRYPOINT FLASK_APP=/opt/app.py flask run --host=0.0.0.0
 ### build an image
 ```shell
 docker build -t web-flask .
-docker run -d --name web -p 5000:5000 web-flask
+docker run -d --name web -p 32002:5000 web-flask
 ```
 
 ### Differents types of docker build
-
 
 ### Build context
 docker rmi 93641fba1066
@@ -184,13 +197,18 @@ docker history systemdevformations/ubuntu_ssh:v2
 
 ### Create an image repository
 ```shell
-docker run -d -p 5000:5000 --name registry registry:2
+docker run -d -p 32002:5000 --name registry registry:2
 docker pull ubuntu
-docker image tag ubuntu localhost:5000/myfirstimage
+docker image tag ubuntu localhost:32002/myfirstimage
 docker images
-docker push localhost:5000/myfirstimage
+docker push localhost:32002/myfirstimage
 # Check
-http://ip:5000/v2/_catalog
+http://ip:32002/v2/_catalog
+docker pull redis
+docker image tag redis localhost:32002/redis
+docker push localhost:32002/redis
+# Check
+http://ip:32002/v2/_catalog
 ```
 
 ### Push an image to Docker hub
@@ -206,13 +224,14 @@ docker push <docker_hub_account>/myfirstimage
 cd
 sudo apt-get -y install libguestfs-tools
 docker pull systemdevformations/alpine-qcow2
-docker run -d --name qcow2 systemdevformations/alpine-qcow2 tail -f /dev/null
+docker run -d --name qcow2 systemdevformations/alpine-qcow2
 docker cp qcow2:alpine3.7.qcow2 . 
 sudo virt-tar-out -a alpine3.7.qcow2 / - | gzip --best > alpine.tgz
 cat alpine.tgz | docker import - alpine:base
 docker images
 docker run -it --name alpes alpine:base /bin/ash
 apk update && apk upgrade
+cat /etc/alpine-release
 exit
 docker ps 
 docker ps -a
@@ -258,7 +277,6 @@ ctrl-c
 
 ```
 
-
 ### Volume -from 
 ```shell
 docker run --name datavol -v /DataMount busybox:latest /bin/true
@@ -271,7 +289,7 @@ docker run -it -v /var/run/docker.sock:/var/run/docker.sock ubuntu:latest sh -c 
 ```
 ### Portainer
 ```shell
-docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer -H unix:///var/run/docker.sock 
+docker run -d -p 32001:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer -H unix:///var/run/docker.sock 
 ```
 ### Links
 ```shell
@@ -302,6 +320,7 @@ fork and clone
 ```https://github.com/system-dev-formations/todo-flask-postgres.git```   
 and follow the README.md file  
 
+
 ## Additional Docker concepts
 See: 
 lab-chaining-commands  
@@ -311,7 +330,7 @@ lab-distroless
 lab-go-webserver  
 lab-minimal-image  
 lab-registry-proxy  
-lab-pipework  
+
 
 
 
