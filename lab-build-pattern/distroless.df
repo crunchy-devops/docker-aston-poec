@@ -1,0 +1,12 @@
+FROM maven:3.6-jdk-11 as build-env
+
+ENV WORKDIR=/project
+RUN mkdir -p ${WORKDIR}
+COPY . ${WORKDIR}
+WORKDIR ${WORKDIR}
+RUN mvn -f pom.xml clean verify
+
+FROM gcr.io/distroless/java:11
+COPY --from=build-env /project/target/ch10-0.1.0.jar /app.jar
+
+ENTRYPOINT ["java","-jar","/app.jar"]

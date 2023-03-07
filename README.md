@@ -181,13 +181,8 @@ docker run -d --name web -p 32002:5000 web-flask
 
 ### Differents types of docker build
 
-### Build context
-docker rmi 93641fba1066
-time docker build -t web-app-distro -f dockerfile-distroless .
-docker images
-docker rmi 4b961d0856dd
-time DOCKER_BUILDKIT=1 docker build -t web-app-distro -f dockerfile-distroless .
-
+### Build pattern
+See lab-build-pattern
 
 ### Check metadata for security reason
 ```shell
@@ -325,8 +320,7 @@ and follow the README.md file
 See: 
 lab-chaining-commands  
 lab-cmd-entrypoint  
-lab-create-dockerfile  
-lab-distroless  
+lab-create-dockerfile   
 lab-go-webserver  
 lab-minimal-image  
 lab-registry-proxy  

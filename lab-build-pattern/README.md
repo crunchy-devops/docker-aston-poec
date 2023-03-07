@@ -1,5 +1,5 @@
 # Lab-build-pattern
-![pattern](screenshots/pattern.png)
+![pattern](../screenshots/pattern.jpg)
 
 Plusieurs modèles existent pour créer des applications et des images à l'aide de conteneurs. 
 Ci-dessous trois des modèles les plus populaires :
@@ -11,8 +11,6 @@ débogage et autres cas d'utilisation supplémentaires dans une version en plusi
 4. Distroless: Les images "Distroless" ne contiennent que votre application et ses dépendances d'exécution. 
 Elles ne contiennent pas de gestionnaires de packages, de shells ou de tout autre programme 
 que vous vous attendriez à trouver dans une distribution Linux standard.
-
-
 
 ## 1. Build all-in-one 
 ```shell
@@ -34,9 +32,16 @@ docker image build -t simple-runtime -f simple-runtime.df .
 ```
 
 ## 3. Multi-stages
-![multi-stage](screenshots/multi-stage.png)
+![multi-stage](../screenshots/multi-stage.png)
 
 ```shell
 docker image build -t app-debug -f multi-stage-runtime.df --target=app-image-debug
 docker image build -t app -f  multi-stage-runtime.df --target=app-image
+# check the side
 ```
+## 4. Distroless
+```shell
+docker image build -t app-distroless -f distroless.df .
+docker container run --rm -it -p 30080:8080 app-distroless
+```
+
