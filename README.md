@@ -4,12 +4,13 @@ Docker training course POEC
 ## See Network Topology
 ![Topology](screenshots/topology.png)
 
+
 ## Connect to the Gateway
 set up Deployment, Configuration to the gateway in Rubymine
 ```shell
 sh connect.sh
 ````
-
+set up ssh keys transfer  
 
 ## Prerequisite for ubuntu 
 ```shell
@@ -33,7 +34,7 @@ pip install --upgrade pip
 pip3 install wheel  # set for permissions purpose
 pip3 install ansible # install ansible 
 pip3 install requests # extra packages
-ansible --version # check the version number # should be the latest 2.12.3
+ansible --version # check the version number # should be the latest 2.13.x
 ansible-playbook -i inventory playbook.yml # run the playbook for installing docker
 ```
 Log out from your ssh session and log in again so all changes will take effect.  
@@ -44,7 +45,7 @@ Type ``` docker ps``` as ubuntu user for checking if all is fine.
 docker ps
 docker run docker/whalesay cowsay Hello-world!
 # run twice
-docker run docker/whalesay cowsay Hello-world!
+docker run --name hello docker/whalesay cowsay Hello-world!
 docker ps
 # check
 docker ps -a 
@@ -52,7 +53,8 @@ docker ps --no-trunc
 docker images
 docker images --no-trunc
 ### Filtre
-docker ps -q --filter "name=db"  # Find container ID from its name
+docker ps -aq --no-trunc --filter "name=hello"  # Find container ID from its name
+docker ps -aq --no-trunc --filter "name=hello" | wc -c  # Find ID length  
 # create container and enter in shell inside the container
 docker run -it --name mycontainer centos /bin/bash
 hostname
@@ -90,7 +92,7 @@ docker stop $(docker ps -aq)  # stop all containers
 docker rm $(docker ps -aq)    # remove all containers
 docker rm -f $(docker ps -aq)  # -f force 
 docker rmi  $(docker images -q)  # remove images, force with -f
-# removing unfinished images 
+# removing <none> images 
 docker rmi -f $(docker images --filter "dangling=true" -q)
 ```
 
@@ -160,8 +162,8 @@ FLASK_APP=/opt/app.py flask run --host=0.0.0.0
 history
 # copy and paste in a Dockerfile
 # add dockerfile DSL keywords
-
 ```
+
 ### Final Dockerfile 
 ```shell
 FROM ubuntu
@@ -181,7 +183,7 @@ docker run -d --name web -p 32002:5000 web-flask
 
 ### Differents types of docker build
 
-### Build pattern
+#### Build pattern
 See lab-build-pattern
 
 ### Check metadata for security reason
