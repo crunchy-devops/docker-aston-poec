@@ -11,7 +11,7 @@ LABEL org.label-schema.version="${BUILD_ID}" \
       org.label-schema.name="ch10" \
       org.label-schema.schema-version="1.0rc1"
 
-COPY multi-stage-runtime.df /Dockerfile
+COPY multi-stage-build.df /Dockerfile
 
 COPY target/ch10-0.1.0.jar /app.jar
 
