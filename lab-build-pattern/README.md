@@ -35,8 +35,8 @@ docker image build -t simple-runtime -f simple-runtime.df .
 ![multi-stage](../screenshots/multi-stage.png)
 
 ```shell
-docker image build -t app-debug --target=app-image-debug-f multi-stage-build.df .
-docker image build -t app  --target=app-image -f  multi-stage-runtime.df .
+docker image build -t app-debug --target=app-image-debug -f multi-stage-build.df .
+docker image build -t app  --target=app-image -f  multi-stage-build.df .
 # check the side
 ```
 ## 4. Distroless

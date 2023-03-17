@@ -169,8 +169,8 @@ history
 FROM ubuntu
 
 RUN apt-get update && \
-apt-get -y install python3 python3-pip vim && \
-pip3 install flask
+    apt-get -y install python3 python3-pip vim && \
+    pip3 install flask
 
 COPY app.py /opt
 ENTRYPOINT FLASK_APP=/opt/app.py flask run --host=0.0.0.0
@@ -210,7 +210,7 @@ http://ip:32002/v2/_catalog
 
 ### Push an image to Docker hub
 ```shell
-docker login -u <docker_hub_account> -p <password>
+docker login -u <docker_hub_account> 
 docker pull ubuntu
 docker image tag ubuntu <docker_hub_account>/myfirstimage
 docker push <docker_hub_account>/myfirstimage
@@ -282,7 +282,7 @@ docker run -it --volumes-from datavol ubuntu /bin/bash
 
 ### Docker in Docker  (DinD)
 ```shell
-docker run -it -v /var/run/docker.sock:/var/run/docker.sock ubuntu:latest sh -c "apt-get update ; apt-get install docker.io -y ; bash"
+docker run -it -v /var/run/docker.sock:/var/run/docker.sock ubuntu:18.04 sh -c "apt-get update ; apt-get install docker.io -y ; bash"
 ```
 ### Portainer
 ```shell
