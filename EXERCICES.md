@@ -26,7 +26,7 @@ Creez un repo github nommé **docker-exe2**
 il doit etre public, avec un fichier README.md , un fichier  .gitignore valable pour le langage Python, une License MIT  
 Faites un git clone dans votre directory project local   
 mettre en place dans rubymine la connexion ssh vers votre VM   
-attention a ne pas oublier le mapping sur le deployment path sur /home/ubuntu/docker-exe2  
+attention a ne pas oublier le mapping sur le deployment path sur /home/<votre compte github>/docker-exe2  
 Mettre les commandes de l'exercice suivant dans le fichier README.md
 
 Creez un Dockerfile file dans votre projet sous Rubymine , qui contient  
