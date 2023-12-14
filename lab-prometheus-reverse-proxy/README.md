@@ -23,7 +23,7 @@ server {
     
     location / {
          proxy_pass      http://localhost:9090/;
-  
+  }
 }
 cd - 
 sudo nginx -t 

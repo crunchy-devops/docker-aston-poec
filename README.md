@@ -67,7 +67,7 @@ docker ps
 docker run -it --name mycontainer centos /bin/bash
 docker start mycontainer
 ## a la place de docker attach
-docker exec -it mycontainer
+docker exec -it mycontainer  /bin/bash 
 #docker stop et  docker rm or in one command docker rm -f 
 docker rm -f mycontainer
 docker run -d --name mycontainer alpine
@@ -286,7 +286,8 @@ docker run -it -v /var/run/docker.sock:/var/run/docker.sock ubuntu:18.04 sh -c "
 ```
 ### Portainer
 ```shell
-docker run -d -p 32001:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer -H unix:///var/run/docker.sock 
+docker volume create portainer_data
+docker run -d -p 32125:8000 -p 32126:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest 
 ```
 ### Links
 ```shell

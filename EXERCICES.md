@@ -44,8 +44,8 @@ mettez cette image dans docker hub sous votre compte docker hub
 ## EXERCICE 3
 Creez une branche nommée **exercice3** dans votre repo github nommé **docker-exe2**  
 Dans cette branche, creez un fichier docker-compose.yml a partir du fichier docker-compose.yml dans votre projet  
-docker-aston-poec. 
-Ce docker-compose.yml va demarrer votre container tomcat 9 
+todo-flask-postgres. 
+Ce docker-compose.yml va demarrer votre container tomcat version 9 
 
 
 
