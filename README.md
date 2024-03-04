@@ -2,15 +2,15 @@
 Docker training course POEC  
 
 ## See Network Topology
-![Topology](screenshots/topology.png)
+![Topology](screenshots/rebond_google.png)
 
 
 ## Connect to the Gateway
-set up Deployment, Configuration to the gateway in Rubymine
+set up Deployment, Configuration to the gateway in goland
 ```shell
-sh connect.sh
+sh jenkins.sh
 ````
-set up ssh keys transfer  
+ 
 
 ## Prerequisite for ubuntu 
 ```shell
@@ -288,7 +288,11 @@ docker run -it -v /var/run/docker.sock:/var/run/docker.sock ubuntu:18.04 sh -c "
 ```shell
 docker volume create portainer_data
 docker run -d -p 32125:8000 -p 32126:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest 
-```
+``` 
+log on https://<ip>:32126  
+set a password and activate portainer , you should see one container 
+
+
 ### Links
 ```shell
 docker run --rm --name example -it busybox:latest
