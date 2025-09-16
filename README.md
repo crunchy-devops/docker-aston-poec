@@ -43,9 +43,9 @@ Type ``` docker ps``` as ubuntu user for checking if all is fine.
 ## Docker Tutorial 
 ```shell
 docker ps
-docker run docker/whalesay cowsay Hello-world!
+docker run synthesizedio/whalesay cowsay Hello-world!
 # run twice
-docker run --name hello docker/whalesay cowsay Hello-world!
+docker run --name hello synthesizedio/whalesay cowsay Hello-world!
 docker ps
 # check
 docker ps -a 
@@ -56,7 +56,7 @@ docker images --no-trunc
 docker ps -aq --no-trunc --filter "name=hello"  # Find container ID from its name
 docker ps -aq --no-trunc --filter "name=hello" | wc -c  # Find ID length  
 # create container and enter in shell inside the container
-docker run -it --name mycontainer centos /bin/bash
+docker run -it --name mycontainer almalinux /bin/bash
 hostname
 exit
 docker ps
@@ -64,7 +64,7 @@ docker start mycontainer
 docker attach mycontainer
 #do a Ctrl-p et Ctrl-q
 docker ps
-docker run -it --name mycontainer centos /bin/bash
+docker run -it --name mycontainer almaliux /bin/bash
 docker start mycontainer
 ## a la place de docker attach
 docker exec -it mycontainer  /bin/bash 
@@ -100,6 +100,8 @@ docker rmi -f $(docker images --filter "dangling=true" -q)
 ```shell
 docker run -it --name test ubuntu
 touch {abc,def,ghi}
+cd /home/ubuntu
+rm .profile
 ls
 ls -alrt
 exit
@@ -109,24 +111,26 @@ docker diff test
 ### 4 ways for creating a Docker image 
 ```shell
 # first way  commit ( from a container )
+docker rm -f test
 docker run -it --name test alpine
 exit
 docker commit test alpine:v3
 docker images
 # second way  save/load(from an image)
 docker pull busybox
-docker save -o myfile.tar busybox
+docker save -o busybox.tar busybox
 ls 
 docker images
 docker rmi -f busybox
 docker images
-docker load --input myfile.tar
+docker load --input busybox.tar
 docker images
 docker history busybox
 # third way export/import   ( from a container)
-docker export test > latest.tar
+docker ps -a
+docker export test > test.tar
 ls -alrt
-cat latest.tar | docker import - alpine:v1
+cat test.tar | docker import - alpine:v4
 docker images
 
 #Fourth way using a Dockerfile
@@ -284,13 +288,14 @@ docker run -it --volumes-from datavol ubuntu /bin/bash
 ```shell
 docker run -it -v /var/run/docker.sock:/var/run/docker.sock ubuntu:18.04 sh -c "apt-get update ; apt-get install docker.io -y ; bash"
 ```
-### Portainer
+### Install portainer for managing containers
 ```shell
 docker volume create portainer_data
-docker run -d -p 32125:8000 -p 32126:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest 
+docker run -d -p 32125:8000 -p 32126:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock \
+ -v portainer_data:/data portainer/portainer-ce:2.27.0-alpine
 ``` 
-log on https://<ip>:32126  
-set a password and activate portainer , you should see one container 
+Quickly (there is a timeout), log on **https://<ip_address>:32126**    
+Set a password and activate portainer , you should see one container
 
 
 ### Links
